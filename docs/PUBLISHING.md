@@ -9,7 +9,9 @@ There's nothing to upload by hand.
 2. Claude makes the change, runs `npm run check` and `npm run build`, and shows you how to test it locally.
 3. When you're happy, say **"publish it"**. Claude saves the change (a *commit*) and sends it to GitHub (a *push*).
 4. GitHub builds and publishes the site. This takes about **2 minutes**.
-5. Open the live link to confirm. Learners get the new version the next time they open the site or app.
+5. Open the live link to confirm. GitHub's delivery network keeps copies of pages for **up to 10 minutes**,
+   so some people (including you) may see the old version for a few minutes after a publish. That's normal;
+   it refreshes on its own. Learners get the new version the next time they open the site or app after that.
 
 ## Checking a publish worked
 
