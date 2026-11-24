@@ -1,0 +1,119 @@
+---
+// "Ask AI" panel: ready-made prompts that open in the learner's own assistant.
+// AI Daily sends nothing anywhere; links open in a new tab with no referrer.
+import { lessonPrompts } from '../lib/prompts';
+import { withBase } from '../lib/paths';
+
+interface Props {
+  title: string;
+  summary: string;
+  aiPrompts: { explain: string; applyToRole: string };
+}
+
+const prompts = lessonPrompts(Astro.props);
+const fill = (t: string) => t.replaceAll('{role}', 'business leader');
+const enc = encodeURIComponent;
+---
+
+<div class="ask" data-ask>
+  <p class="ask__note">
+    These open in <strong>your own</strong> AI assistant. AI Daily sends nothing anywhere. Prompts include only today's
+    topic and your role, never your name. Use your company-approved assistant (<a href={withBase('lesson/using-ai-safely/')}>Day 5</a>).
+  </p>
+
+  <div class="ask__grid">
+    {
+      prompts.map((p) => (
+        <details class="ask__card" data-ask-card data-template={p.template}>
+          <summary class="ask__summary">
+            <span class="ask__label">{p.label}</span>
+            <span class="ask__hint">{p.hint}</span>
+          </summary>
+          <div class="ask__body">
+            <p class="ask__prompt" data-ask-text>
+              {fill(p.template)}
+            </p>
+            <div class="ask__actions">
+              <a
+                class="btn btn-primary ask__btn"
+                data-ask-link="chatgpt"
+                href={`https://chatgpt.com/?q=${enc(fill(p.template))}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Open in ChatGPT<span class="visually-hidden"> (opens in a new tab and sends the prompt)</span>
+              </a>
+              <a
+                class="btn btn-primary ask__btn"
+                data-ask-link="claude"
+                href={`https://claude.ai/new?q=${enc(fill(p.template))}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Open in Claude<span class="visually-hidden"> (opens in a new tab)</span>
+              </a>
+            </div>
+            <div class="ask__actions">
+              <button type="button" class="btn btn-secondary ask__btn" data-ask-copy>
+                Copy prompt
+              </button>
+              <a class="btn btn-link ask__btn" href="https://gemini.google.com/app" target="_blank" rel="noopener noreferrer">
+                Open Gemini<span class="visually-hidden"> (opens in a new tab; paste the prompt)</span>
+              </a>
+              <a class="btn btn-link ask__btn" href="https://copilot.microsoft.com/" target="_blank" rel="noopener noreferrer">
+                Open Copilot<span class="visually-hidden"> (opens in a new tab; paste the prompt)</span>
+              </a>
+            </div>
+            <p class="ask__small">
+              ChatGPT sends the prompt straight away. Claude types it in for you after you sign in. For Gemini or
+              Copilot, copy the prompt, open the assistant and paste it.
+            </p>
+            <span class="visually-hidden" role="status" data-ask-status />
+          </div>
+        </details>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  import { load, onChange } from '../lib/storage';
+  import { DEFAULT_ROLE_PHRASE, ROLE_PHRASES } from '../lib/prompts';
+
+  const cards = Array.from(document.querySelectorAll<HTMLElement>('[data-ask-card]'));
+
+  function current(card: HTMLElement): string {
+    const role = load().profile.role;
+    const phrase = (role && ROLE_PHRASES[role]) || DEFAULT_ROLE_PHRASE;
+    return (card.dataset.template ?? '').replaceAll('{role}', phrase);
+  }
+
+  function render() {
+    for (const card of cards) {
+      const prompt = current(card);
+      const text = card.querySelector<HTMLElement>('[data-ask-text]');
+      if (text) text.textContent = prompt;
+      const q = encodeURIComponent(prompt);
+      card.querySelector<HTMLAnchorElement>('[data-ask-link="chatgpt"]')?.setAttribute('href', `https://chatgpt.com/?q=${q}`);
+      card.querySelector<HTMLAnchorElement>('[data-ask-link="claude"]')?.setAttribute('href', `https://claude.ai/new?q=${q}`);
+    }
+  }
+
+  for (const card of cards) {
+    const btn = card.querySelector<HTMLButtonElement>('[data-ask-copy]');
+    const status = card.querySelector<HTMLElement>('[data-ask-status]');
+    btn?.addEventListener('click', async () => {
+      const prompt = current(card);
+      try {
+        await navigator.clipboard.writeText(prompt);
+        btn.textContent = '✓ Copied';
+        if (status) status.textContent = 'Prompt copied';
+        window.setTimeout(() => (btn.textContent = 'Copy prompt'), 2500);
+      } catch {
+        window.prompt('Copy this prompt:', prompt);
+      }
+    });
+  }
+
+  onChange(render);
+</script>

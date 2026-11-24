@@ -50,6 +50,9 @@ links:
     source: "Andrej Karpathy on YouTube (1 hr, for the curious)"
     free: true
     lastChecked: "2026-11-24"
+aiPrompts:
+  explain: "Explain how large language models like you produce answers, in plain English for a busy executive. Cover prediction, the context window and why hallucinations happen, using one memorable analogy. Keep it under 200 words, then ask me one question to check my understanding."
+  applyToRole: "I'm a {role}. Help me map my own 'jagged frontier': list 5 common tasks in my role, and for each say whether AI is typically strong, mixed or weak at it today, and why. Then suggest how I should check AI output for the weak ones."
 quiz:
   - q: "At its core, what does a large language model do?"
     options:

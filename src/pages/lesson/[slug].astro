@@ -7,6 +7,7 @@ import Flashcards from '../../components/islands/Flashcards.tsx';
 import Checklist from '../../components/islands/Checklist.tsx';
 import VideoEmbed from '../../components/VideoEmbed.astro';
 import ShareButton from '../../components/ShareButton.astro';
+import AskAI from '../../components/AskAI.astro';
 import { withBase } from '../../lib/paths';
 
 export async function getStaticPaths() {
@@ -109,6 +110,12 @@ const level = data.level[0].toUpperCase() + data.level.slice(1);
       <p class="eyebrow">Quick review · 1 min</p>
       <h2 id="cards-heading">Flashcards</h2>
       <Flashcards client:idle cards={data.flashcards} />
+    </section>
+
+    <section class="lesson__section" aria-labelledby="ask-heading">
+      <p class="eyebrow">Practise with your own assistant</p>
+      <h2 id="ask-heading">Ask AI about this lesson</h2>
+      <AskAI title={data.title} summary={data.summary} aiPrompts={data.aiPrompts} />
     </section>
 
     <section class="lesson__section card practice" aria-labelledby="practice-heading">

@@ -48,6 +48,9 @@ checklist:
   - "Read your company's AI policy, or ask who owns it if you can't find one."
   - "Write your green, amber and red list and keep it where you work."
   - "Before sending anything AI-drafted this week, check every name, number and claim."
+aiPrompts:
+  explain: "Explain the three habits for using AI safely at work (protect data, verify output, own the result) for a busy executive, with one short real-world example for each. Keep it practical and under 200 words."
+  applyToRole: "I'm a {role}. Help me build my personal AI traffic light: list typical information in my role and sort it into green (fine to use with AI), amber (anonymise first) and red (never paste). Then give me 3 anonymisation tricks I can use today."
 quiz:
   - q: "You want AI help improving a proposal with client names and pricing. Your company hasn't approved the tool. What should you do?"
     options:

@@ -56,6 +56,9 @@ checklist:
   - "Rewrite one of your regular prompts using context, task, format and example."
   - "Reply to a first AI draft with at least two short refinements before you use it."
   - "Save your best prompt of the week somewhere you can find it again."
+aiPrompts:
+  explain: "Explain the four parts of a strong prompt (context, task, format, example) and why iterating matters, for a busy executive. Show one weak prompt and the same prompt rewritten with all four parts. Keep it under 200 words."
+  applyToRole: "I'm a {role}. Ask me what task I do most often each week. Then help me write a reusable prompt for it using context, task, format and example. Ask one question at a time, then give me the final prompt with [BLANKS] for the parts that change."
 quiz:
   - q: "What's the best mental model for writing a prompt?"
     options:

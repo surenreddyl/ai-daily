@@ -42,6 +42,9 @@ checklist:
   - "Create your five-rule voice card and save it where you keep your prompts."
   - "Start your next three writing prompts with who the reader is."
   - "Add a short \"words to avoid\" list to one prompt and see the difference."
+aiPrompts:
+  explain: "Explain how to get AI writing that matches a specific audience and a personal voice, for a busy executive. Cover naming the reader, setting the tone and building a short 'voice card'. Show one generic sentence rewritten for two different audiences. Keep it under 200 words."
+  applyToRole: "I'm a {role}. Ask me to paste two or three short pieces of my own writing. Then describe my voice in five short rules, including words and habits to avoid, and show how you'd rewrite a typical message for my role using those rules."
 quiz:
   - q: "What single addition most improves an AI writing prompt?"
     options:

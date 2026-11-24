@@ -60,6 +60,9 @@ checklist:
   - "Find out which AI assistants your company has approved for work data."
   - "Run one real task in two assistants and score them."
   - "Choose your default assistant and pin it where you'll see it every day."
+aiPrompts:
+  explain: "Explain, in plain English for a busy executive, how Claude, ChatGPT, Gemini and Microsoft Copilot differ for everyday business work, and why company approval and fit with existing tools often matter more than raw capability. Be balanced and avoid claims about specific model versions. Keep it under 200 words."
+  applyToRole: "I'm a {role}. Help me design a fair 30-minute test of two AI assistants on my real work: suggest 3 tasks typical for my role, a scoring sheet (accuracy, usefulness, editing time) and the exact prompt to use for each task."
 quiz:
   - q: "Your company runs on Google Workspace and has approved Gemini. What's the sensible default?"
     options:

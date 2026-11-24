@@ -25,6 +25,7 @@ If a field is missing or too long, `npm run build` stops and names the file and 
 | `quiz` | 3–5 questions: `q`, `options`, `answer`, `explain` | `answer` counts from 0 (0 = first option) |
 | `flashcards` | 3–6 cards: `front` (the term), `back` (the meaning) | Front up to 60 chars, back up to 200 |
 | `checklist` | 3–5 small actions for "Apply it this week" | Each up to 140 characters, doable within a week |
+| `aiPrompts` | `explain` and `applyToRole` prompts for the Ask AI panel | 80–900 characters; `applyToRole` must contain `{role}` |
 | `video` (optional) | `youtubeId`, `title`, `source`, `minutes` | `youtubeId` = the 11 characters after `v=` in the link |
 | `diagram` (optional) | `src`, `alt`, `caption` | `src` = file name in `public/diagrams` without `.svg`; `alt` describes it in words |
 
@@ -67,6 +68,16 @@ Don't add "Try it today" or "Go deeper" sections. The page builds those from `pr
 
 - 3–4 small, concrete actions a busy leader can do within a week.
 - Start each with a verb: "Run…", "Save…", "Ask…".
+
+## Writing the Ask AI prompts
+
+The Ask AI panel has four prompts. You write two; the other two ("Quiz me", "Challenge me") are built automatically from the title and summary.
+
+- **`explain`**: ask the AI to re-explain today's idea for "a busy executive", with one analogy or example, under 200 words, ending with a check question.
+- **`applyToRole`**: start with "I'm a {role}." and ask for something concrete and doable this week (3 ideas, a template, a table). `{role}` becomes "sales leader", "marketing leader", "general manager or operations leader" or "business leader".
+- Never include names, companies or anything personal. The prompt is visible to the learner and goes to their own assistant.
+- Prefer prompts where the AI asks the learner a question first. It makes the practice interactive.
+- Use plain quotes inside prompts (`'like this'`), because the whole prompt is already in double quotes.
 
 ## Diagrams
 

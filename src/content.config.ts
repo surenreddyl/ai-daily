@@ -92,7 +92,14 @@ const lessons = defineCollection({
       })
       .optional(),
     image: z.string().optional(),
-    aiPrompts: z.object({ explain: z.string(), applyToRole: z.string() }).optional(),
+    aiPrompts: z.object({
+      explain: z.string().min(80).max(900),
+      applyToRole: z
+        .string()
+        .min(80)
+        .max(900)
+        .refine((s) => s.includes('{role}'), 'applyToRole must include {role} so it can be personalised'),
+    }),
   }),
 });
 

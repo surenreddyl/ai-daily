@@ -31,4 +31,9 @@ One line per key decision. Newest at the bottom.
 - 2026-11-24 · One shared share-preview image (1200×630) for all pages. Lesson previews use the title and "why it matters" line. Per-lesson images are parked.
 - 2026-11-24 · Quiz, flashcards and checklist now load when the page is idle (not when scrolled into view), so they're saved for offline use even if the learner never scrolled to them. Also fixes the Phase 2 risk of a missed first tap.
 - 2026-11-24 · "Share this lesson" uses the phone's share sheet where available, otherwise copies the link.
+- 2026-11-24 · Phase 5: "Ask AI" opens the learner's own assistant with a ready-made prompt. No built-in chat, because it would need a paid key and a server, and the rules forbid keys in client code.
+- 2026-11-24 · Tested links on 2026-11-24: ChatGPT (`chatgpt.com/?q=`) opens and sends; Claude (`claude.ai/new?q=`) types the prompt after sign-in; Gemini and Copilot ignore it, so they get "Copy prompt" plus an open link.
+- 2026-11-24 · Prompts contain only the lesson topic and the learner's role phrase, never their name. Links open with no referrer.
+- 2026-11-24 · `aiPrompts` (explain, applyToRole with `{role}`) is required on every lesson; "Quiz me" and "Challenge me" are generated from the title and summary.
+- 2026-11-24 · GitHub publish steps updated to checkout v7, setup-node v7 (Node 24), upload-pages-artifact v5, deploy-pages v5, clearing the Node 20 warning.
 - 2026-11-24 · About page states the privacy promise accurately: no cookies, analytics or ads; the host keeps standard server logs.

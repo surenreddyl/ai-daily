@@ -50,6 +50,9 @@ checklist:
   - "Use an AI assistant for one real task this week, such as summarising a thread or drafting an email."
   - "Spot one confident statement in an AI answer and check it against a source."
   - "Tell one colleague what generative AI is in one sentence."
+aiPrompts:
+  explain: "Explain what generative AI is to me as if I were a smart, busy executive with no technical background. Use one everyday analogy, then explain why it can sound confident and still be wrong. Keep it under 200 words and end with one question to check I've understood."
+  applyToRole: "I'm a {role}. Give me 3 specific ways I could use generative AI in my work this week, each doable in under 15 minutes with a free AI assistant. For each, give the exact prompt I should type and one risk to watch for. Use a short table."
 quiz:
   - q: "What makes generative AI different from older, traditional AI?"
     options:

@@ -42,6 +42,9 @@ checklist:
   - "Run a premortem with AI on one real plan this week."
   - "Ask AI to role-play the toughest stakeholder for your next important meeting."
   - "Replace \"Is this good?\" with \"What am I missing?\" in your prompts."
+aiPrompts:
+  explain: "Explain how to use AI as a thinking partner rather than a yes-man, for a busy executive. Cover devil's advocate, the premortem and stakeholder role-play, and why AI tends to agree with users. Give one example prompt for each. Keep it under 200 words."
+  applyToRole: "I'm a {role}. Run a premortem with me. First ask me to describe, in a few sentences, a plan or decision I'm working on. Then assume it has failed a year from now, list the 5 most likely reasons, ranked, and suggest one preventive step for each of the top two."
 quiz:
   - q: "Why should you explicitly ask AI for criticism?"
     options:

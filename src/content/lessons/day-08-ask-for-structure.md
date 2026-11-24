@@ -45,6 +45,9 @@ checklist:
   - "Turn one messy input into a table with columns you chose."
   - "Create your own one-page brief template and save it."
   - "Ask for \"bottom line first\" in at least two prompts this week."
+aiPrompts:
+  explain: "Explain why asking AI for a specific structure (a table, a framework, a one-page brief) gives more useful output than asking for a summary, for a busy executive. Show one vague request and the same request with a defined structure. Keep it under 200 words."
+  applyToRole: "I'm a {role}. Design a one-page brief template I could reuse every week for my most common update or decision. Give the section names, what each must contain and length limits, then the exact prompt to turn messy notes into that brief."
 quiz:
   - q: "Which prompt is most likely to give you decision-ready output?"
     options:

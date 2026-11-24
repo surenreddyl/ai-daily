@@ -45,6 +45,9 @@ checklist:
   - "Create one shared place for team prompts, such as a doc, a project, a GPT or a Gem."
   - "Add your best prompt using the five-part format."
   - "Ask one colleague to test it and suggest one improvement."
+aiPrompts:
+  explain: "Explain what a team prompt library is and why it matters, for a busy executive. Cover what each entry should contain (name, when to use it, the prompt with blanks, an example output, an owner) and where teams can keep one. Keep it under 200 words."
+  applyToRole: "I'm a {role}. Suggest 5 prompts that would deserve a place in my team's shared prompt library. For each, write the full library entry: name, when to use it, the prompt with [BLANKS], what good output looks like, and who should own it."
 quiz:
   - q: "Which is the best sign a prompt belongs in the team library?"
     options:

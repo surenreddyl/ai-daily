@@ -51,6 +51,9 @@ checklist:
   - "For your next AI question about a document, paste or upload the document first."
   - "Add \"Using only this material\" and \"quote your source\" to one prompt this week."
   - "Spot-check two AI quotes against the original document."
+aiPrompts:
+  explain: "Explain 'grounding' an AI answer in my own documents, for a busy executive: what it is, why it improves accuracy, and how asking for quotes makes answers checkable. Include one before-and-after prompt example. Keep it under 200 words."
+  applyToRole: "I'm a {role}. Suggest 3 documents I probably deal with regularly that AI could help me understand faster. For each, give me a grounded prompt that says 'using only this document', asks for quotes and says what to do if the answer isn't there."
 quiz:
   - q: "What does \"grounding\" an AI answer mean?"
     options:
