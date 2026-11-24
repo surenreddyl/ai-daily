@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+import { withBase } from '../lib/paths';
+---
+
+<BaseLayout
+  title="About"
+  description="AI Daily helps busy business leaders learn one key AI idea a day in 10–15 minutes. Free, no login, no tracking."
+  current="about"
+>
+  <article class="prose about">
+    <h1>About AI Daily</h1>
+    <p class="lede">One key AI idea a day, in the time it takes to drink a coffee.</p>
+
+    <h2>Who it's for</h2>
+    <p>
+      Busy business leaders in sales, marketing, general management and operations who want to understand AI well
+      enough to use it, lead teams with it and make good decisions about it, without becoming engineers.
+    </p>
+
+    <h2>How it works</h2>
+    <ul>
+      <li><strong>One lesson a day</strong>, readable in about five minutes, with examples for your role.</li>
+      <li><strong>A practice task</strong> of up to fifteen minutes, so you learn by doing.</li>
+      <li><strong>A quick quiz, flashcards and a weekly checklist</strong> to make it stick.</li>
+      <li><strong>60 lessons across 12 weeks</strong>, from the basics to leading AI adoption. New lessons are added regularly.</li>
+    </ul>
+
+    <h2>Your privacy</h2>
+    <ul>
+      <li><strong>No login, no account.</strong> You never give us your name or email.</li>
+      <li>
+        <strong>No tracking or analytics.</strong> We don't add cookies, analytics or ads. Like any website, our host
+        (GitHub Pages) keeps standard technical logs for security.
+      </li>
+      <li>
+        <strong>Your progress stays on your device.</strong> Your role, streaks and quiz scores are saved in your
+        browser only. Clear it anytime from your <a href={withBase('profile/')}>Profile</a>.
+      </li>
+      <li>
+        <strong>Videos load only when you tap play</strong>, using YouTube's privacy-enhanced mode. Links to other sites
+        open in a new tab and follow those sites' own policies.
+      </li>
+    </ul>
+
+    <h2>Install it like an app</h2>
+    <p>
+      On iPhone, open this site in Safari, tap <strong>Share</strong>, then <strong>Add to Home Screen</strong>. On
+      Android, open it in Chrome and tap <strong>Install app</strong> or <strong>Add to Home screen</strong> in the
+      menu. Lessons you've opened will then work even without a connection.
+    </p>
+
+    <h2>Free, always</h2>
+    <p>AI Daily is free to use and share. If you find it useful, send a lesson to a colleague.</p>
+
+    <p><a class="btn btn-primary" href={withBase()}>Go to today's lesson →</a></p>
+  </article>
+</BaseLayout>

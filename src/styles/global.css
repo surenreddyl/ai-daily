@@ -180,6 +180,22 @@ main {
   font-size: var(--text-xs);
 }
 
+.site-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.site-footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-min);
+  color: var(--color-ink-muted);
+  font-weight: 600;
+}
+
 /* ---------- Shared pieces ---------- */
 .eyebrow {
   font-size: var(--text-xs);

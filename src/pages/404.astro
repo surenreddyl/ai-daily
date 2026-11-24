@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+import { withBase } from '../lib/paths';
+---
+
+<BaseLayout title="Page not found" description="That page doesn't exist. Try today's lesson or the Library.">
+  <section class="prose status-page">
+    <p class="eyebrow">Error 404</p>
+    <h1>We couldn't find that page</h1>
+    <p class="lede">The link may be mistyped, or the page may have moved.</p>
+    <p class="status-page__actions">
+      <a class="btn btn-primary" href={withBase()}>Go to today's lesson</a>
+      <a class="btn btn-secondary" href={withBase('library/')}>Browse the Library</a>
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .status-page {
+    padding-block: var(--space-6);
+  }
+  .status-page__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+</style>

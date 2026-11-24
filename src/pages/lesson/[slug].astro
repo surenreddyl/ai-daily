@@ -6,6 +6,7 @@ import Quiz from '../../components/islands/Quiz.tsx';
 import Flashcards from '../../components/islands/Flashcards.tsx';
 import Checklist from '../../components/islands/Checklist.tsx';
 import VideoEmbed from '../../components/VideoEmbed.astro';
+import ShareButton from '../../components/ShareButton.astro';
 import { withBase } from '../../lib/paths';
 
 export async function getStaticPaths() {
@@ -45,7 +46,7 @@ const typeLabels = {
 const level = data.level[0].toUpperCase() + data.level.slice(1);
 ---
 
-<BaseLayout title={data.title} description={data.summary} current="lesson">
+<BaseLayout title={data.title} description={data.whyItMatters} current="lesson" ogType="article">
   <article class="lesson">
     <header class="lesson__header">
       <p class="eyebrow">
@@ -101,13 +102,13 @@ const level = data.level[0].toUpperCase() + data.level.slice(1);
     <section class="lesson__section" aria-labelledby="quiz-heading">
       <p class="eyebrow">Check your understanding · 2 min</p>
       <h2 id="quiz-heading">Quick quiz</h2>
-      <Quiz client:visible slug={data.slug} questions={data.quiz} />
+      <Quiz client:idle slug={data.slug} questions={data.quiz} />
     </section>
 
     <section class="lesson__section" aria-labelledby="cards-heading">
       <p class="eyebrow">Quick review · 1 min</p>
       <h2 id="cards-heading">Flashcards</h2>
-      <Flashcards client:visible cards={data.flashcards} />
+      <Flashcards client:idle cards={data.flashcards} />
     </section>
 
     <section class="lesson__section card practice" aria-labelledby="practice-heading">
@@ -120,7 +121,7 @@ const level = data.level[0].toUpperCase() + data.level.slice(1);
     <section class="lesson__section" aria-labelledby="apply-heading">
       <p class="eyebrow">Make it stick</p>
       <h2 id="apply-heading">Apply it this week</h2>
-      <Checklist client:visible slug={data.slug} items={data.checklist} />
+      <Checklist client:idle slug={data.slug} items={data.checklist} />
     </section>
 
     <section class="lesson__section" aria-labelledby="links-heading">
@@ -146,6 +147,7 @@ const level = data.level[0].toUpperCase() + data.level.slice(1);
 
     <div class="lesson__done">
       <DoneButton slug={data.slug} />
+      <ShareButton title={`AI Daily, Day ${data.day}: ${data.title}`} text={data.whyItMatters} />
     </div>
 
     <nav class="lesson__pager" aria-label="More lessons">
@@ -326,6 +328,9 @@ const level = data.level[0].toUpperCase() + data.level.slice(1);
   }
   .lesson__done {
     margin-top: var(--space-7);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
   }
   .lesson__pager {
     display: flex;

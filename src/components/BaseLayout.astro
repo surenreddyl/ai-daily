@@ -5,15 +5,21 @@ import { withBase } from '../lib/paths';
 interface Props {
   title: string;
   description?: string;
-  current?: 'today' | 'library' | 'lesson' | 'profile';
+  current?: 'today' | 'library' | 'lesson' | 'profile' | 'about';
+  /** Open Graph type: "article" for lessons, "website" otherwise. */
+  ogType?: 'website' | 'article';
 }
 
 const {
   title,
   description = 'Learn one key AI idea a day in 10–15 minutes. Free, no login.',
   current,
+  ogType = 'website',
 } = Astro.props;
 const fullTitle = title === 'Today' ? 'AI Daily: one AI idea a day' : `${title} · AI Daily`;
+const site = Astro.site ?? new URL('http://localhost:4321');
+const pageUrl = new URL(Astro.url.pathname, site).toString();
+const imageUrl = new URL(withBase('og-image.png'), site).toString();
 ---
 
 <!doctype html>
@@ -23,8 +29,29 @@ const fullTitle = title === 'Today' ? 'AI Daily: one AI idea a day' : `${title} 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={pageUrl} />
+
+    <!-- App install -->
+    <link rel="manifest" href={withBase('manifest.webmanifest')} />
     <meta name="theme-color" content="#1f5e57" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="AI Daily" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <link rel="icon" type="image/svg+xml" href={withBase('favicon.svg')} />
+    <link rel="apple-touch-icon" href={withBase('apple-touch-icon.png')} />
+
+    <!-- Share previews (WhatsApp, LinkedIn, Slack, email, X) -->
+    <meta property="og:site_name" content="AI Daily" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title === 'Today' ? 'AI Daily: one AI idea a day' : title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="AI Daily: one AI idea a day. Five minutes to read, fifteen to try it." />
+    <meta name="twitter:card" content="summary_large_image" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -46,9 +73,35 @@ const fullTitle = title === 'Today' ? 'AI Daily: one AI idea a day' : `${title} 
       <slot />
     </main>
     <footer class="site-footer">
-      <div class="container">
-        Free · No login · Your progress stays on this device.
+      <div class="container site-footer__inner">
+        <span>Free · No login · Your progress stays on this device.</span>
+        <a href={withBase('about/')} aria-current={current === 'about' ? 'page' : undefined}>About</a>
       </div>
     </footer>
+    {
+      import.meta.env.PROD && (
+        <script is:inline define:vars={{ swUrl: withBase('sw.js'), swScope: withBase() }}>
+          if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+              navigator.serviceWorker
+                .register(swUrl, { scope: swScope })
+                .then(function () {
+                  return navigator.serviceWorker.ready;
+                })
+                .then(function (reg) {
+                  // Save the page that's already open (and its files) for offline use.
+                  var urls = [location.href].concat(
+                    performance.getEntriesByType('resource').map(function (e) {
+                      return e.name;
+                    }),
+                  );
+                  if (reg.active) reg.active.postMessage({ type: 'save', urls: urls });
+                })
+                .catch(function () {});
+            });
+          }
+        </script>
+      )
+    }
   </body>
 </html>

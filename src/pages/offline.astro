@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+import { withBase } from '../lib/paths';
+---
+
+<BaseLayout title="You're offline" description="You're offline. Lessons you've already opened still work.">
+  <section class="prose status-page">
+    <p class="eyebrow">No connection</p>
+    <h1>You're offline</h1>
+    <p class="lede">This page hasn't been saved on your device yet. Lessons you've already opened still work.</p>
+    <p class="status-page__actions">
+      <a class="btn btn-primary" href={withBase()}>Go to Today</a>
+      <a class="btn btn-secondary" href={withBase('library/')}>Open the Library</a>
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .status-page {
+    padding-block: var(--space-6);
+  }
+  .status-page__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+</style>

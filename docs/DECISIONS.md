@@ -25,3 +25,10 @@ One line per key decision. Newest at the bottom.
 - 2026-11-24 · `diagram` became an object (src, alt, caption). Alt text is required.
 - 2026-11-24 · Checklist (3–5 items) is required on every lesson. Ticks are saved per lesson on the device.
 - 2026-11-24 · Every statistic in a lesson was checked against its source page. Made-up scenarios are labelled "An illustrative scenario".
+- 2026-11-24 · Phase 4: hosting on GitHub Pages with a public repository (owner's choice). No secrets or personal data in the project.
+- 2026-11-24 · Commits use GitHub's noreply address for the owner, so no personal email appears in the public history.
+- 2026-11-24 · Offline support uses a hand-written service worker (no Workbox). Pages: network first, saved for offline. Hashed assets: saved on first use. Registered only in production builds.
+- 2026-11-24 · One shared share-preview image (1200×630) for all pages. Lesson previews use the title and "why it matters" line. Per-lesson images are parked.
+- 2026-11-24 · Quiz, flashcards and checklist now load when the page is idle (not when scrolled into view), so they're saved for offline use even if the learner never scrolled to them. Also fixes the Phase 2 risk of a missed first tap.
+- 2026-11-24 · "Share this lesson" uses the phone's share sheet where available, otherwise copies the link.
+- 2026-11-24 · About page states the privacy promise accurately: no cookies, analytics or ads; the host keeps standard server logs.
