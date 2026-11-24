@@ -1,0 +1,54 @@
+---
+import '../styles/global.css';
+import { withBase } from '../lib/paths';
+
+interface Props {
+  title: string;
+  description?: string;
+  current?: 'today' | 'library' | 'lesson' | 'profile';
+}
+
+const {
+  title,
+  description = 'Learn one key AI idea a day in 10–15 minutes. Free, no login.',
+  current,
+} = Astro.props;
+const fullTitle = title === 'Today' ? 'AI Daily: one AI idea a day' : `${title} · AI Daily`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#1f5e57" />
+    <link rel="icon" type="image/svg+xml" href={withBase('favicon.svg')} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href={withBase()}>AI&nbsp;<span>Daily</span></a>
+        <nav class="site-nav" aria-label="Main">
+          <a href={withBase()} aria-current={current === 'today' ? 'page' : undefined}>Today</a>
+          <a href={withBase('library/')} aria-current={current === 'library' ? 'page' : undefined}>
+            Library
+          </a>
+          <a href={withBase('profile/')} aria-current={current === 'profile' ? 'page' : undefined}>
+            Profile
+          </a>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="container">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        Free · No login · Your progress stays on this device.
+      </div>
+    </footer>
+  </body>
+</html>

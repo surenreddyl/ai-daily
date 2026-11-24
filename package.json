@@ -1,0 +1,26 @@
+{
+  "name": "ai-daily",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AI Daily: learn one key AI idea a day in 10-15 minutes.",
+  "scripts": {
+    "dev": "astro dev",
+    "check": "astro check",
+    "build": "astro build",
+    "preview": "astro preview",
+    "links": "node scripts/check-links.mjs"
+  },
+  "dependencies": {
+    "@astrojs/preact": "^4.1.3",
+    "astro": "^5.16.0",
+    "preact": "^10.29.8"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "typescript": "^5.9.0"
+  },
+  "engines": {
+    "node": ">=20.3.0"
+  }
+}

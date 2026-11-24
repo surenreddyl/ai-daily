@@ -1,0 +1,54 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { withBase } from '../lib/paths';
+
+interface Props {
+  lesson: CollectionEntry<'lessons'>;
+  moduleTitle?: string;
+}
+
+const { lesson, moduleTitle } = Astro.props;
+const { day, title, whyItMatters, minutes, practice, level, slug } = lesson.data;
+const href = withBase(`lesson/${slug}/`);
+---
+
+<article class="card lesson-card">
+  <p class="eyebrow">
+    Day {day}{moduleTitle && <> · {moduleTitle}</>}
+  </p>
+  <h2 class="lesson-card__title">
+    <a href={href}>{title}</a>
+  </h2>
+  <p class="lesson-card__why">{whyItMatters}</p>
+  <p class="lesson-card__meta">
+    <span class="tag">{minutes} min read</span>
+    <span class="tag">{practice.minutes} min practice</span>
+    <span class="tag tag-accent">{level[0].toUpperCase() + level.slice(1)}</span>
+  </p>
+  <a class="btn btn-primary" href={href} aria-label={`Start lesson: ${title}`}>Start lesson →</a>
+</article>
+
+<style>
+  .lesson-card__title {
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    margin-top: 0;
+  }
+  .lesson-card__title a {
+    color: var(--color-ink);
+    text-decoration: none;
+  }
+  .lesson-card__title a:hover {
+    color: var(--color-accent);
+  }
+  .lesson-card__why {
+    color: var(--color-ink-muted);
+    max-width: var(--measure);
+  }
+  .lesson-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-5);
+  }
+</style>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 420" width="400" height="420">
+  <rect class="dg-box" x="16" y="8" width="368" height="60" rx="12"/>
+  <circle class="dg-dot" cx="44" cy="38" r="13" opacity="0.15"/>
+  <text class="dg-num" x="44" y="42.5" text-anchor="middle">1</text>
+  <text class="dg-text" x="70" y="34">Context</text>
+  <text class="dg-sub" x="70" y="53">Who it is for, what is going on</text>
+  <line class="dg-line" x1="200" y1="71" x2="200" y2="85"/>
+  <polygon class="dg-head" points="194,84 206,84 200,91"/>
+  <rect class="dg-box" x="16" y="94" width="368" height="60" rx="12"/>
+  <circle class="dg-dot" cx="44" cy="124" r="13" opacity="0.15"/>
+  <text class="dg-num" x="44" y="128.5" text-anchor="middle">2</text>
+  <text class="dg-text" x="70" y="120">Task</text>
+  <text class="dg-sub" x="70" y="139">One clear verb: draft, summarise, compare</text>
+  <line class="dg-line" x1="200" y1="157" x2="200" y2="171"/>
+  <polygon class="dg-head" points="194,170 206,170 200,177"/>
+  <rect class="dg-box" x="16" y="180" width="368" height="60" rx="12"/>
+  <circle class="dg-dot" cx="44" cy="210" r="13" opacity="0.15"/>
+  <text class="dg-num" x="44" y="214.5" text-anchor="middle">3</text>
+  <text class="dg-text" x="70" y="206">Format</text>
+  <text class="dg-sub" x="70" y="225">Length, structure and tone</text>
+  <line class="dg-line" x1="200" y1="243" x2="200" y2="257"/>
+  <polygon class="dg-head" points="194,256 206,256 200,263"/>
+  <rect class="dg-box" x="16" y="266" width="368" height="60" rx="12"/>
+  <circle class="dg-dot" cx="44" cy="296" r="13" opacity="0.15"/>
+  <text class="dg-num" x="44" y="300.5" text-anchor="middle">4</text>
+  <text class="dg-text" x="70" y="292">Example</text>
+  <text class="dg-sub" x="70" y="311">Show what good looks like</text>
+  <line class="dg-line" x1="200" y1="329" x2="200" y2="343"/>
+  <polygon class="dg-head" points="194,342 206,342 200,349"/>
+  <rect class="dg-accent" x="16" y="352" width="368" height="60" rx="12"/>
+  <circle class="dg-dot" cx="44" cy="382" r="13" opacity="0.15"/>
+  <text class="dg-num" x="44" y="386.5" text-anchor="middle">↻</text>
+  <text class="dg-text" x="70" y="378">Iterate</text>
+  <text class="dg-sub" x="70" y="397">"Shorter." "Warmer." "Two options."</text>
+</svg>

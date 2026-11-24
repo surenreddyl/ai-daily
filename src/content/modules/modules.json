@@ -1,0 +1,14 @@
+[
+  { "id": "w01-foundations", "week": 1, "title": "Foundations of generative AI", "summary": "What generative AI is, how it works, and how to talk to it." },
+  { "id": "w02-prompting", "week": 2, "title": "Prompting for business results", "summary": "Techniques that turn generic answers into usable work." },
+  { "id": "w03-sales", "week": 3, "title": "AI for sales", "summary": "Prospecting, call prep, follow-ups and pipeline insight." },
+  { "id": "w04-marketing", "week": 4, "title": "AI for marketing", "summary": "Content, campaigns, research and personalisation at scale." },
+  { "id": "w05-analysis", "week": 5, "title": "AI for analysis and decisions", "summary": "Using AI to read data, spot patterns and pressure-test choices." },
+  { "id": "w06-productivity", "week": 6, "title": "Everyday productivity with AI assistants", "summary": "Email, meetings, documents and research, done faster." },
+  { "id": "w07-agents", "week": 7, "title": "Agents and automation", "summary": "AI that takes actions across tools, and where it fits." },
+  { "id": "w08-risk", "week": 8, "title": "Risk, ethics and governance", "summary": "Accuracy, privacy, bias, IP and sensible guardrails." },
+  { "id": "w09-tools", "week": 9, "title": "Choosing AI tools and vendors", "summary": "How to compare tools, read claims and run a fair pilot." },
+  { "id": "w10-use-cases", "week": 10, "title": "Finding and sizing AI use cases", "summary": "Picking the right problems and estimating the payoff." },
+  { "id": "w11-adoption", "week": 11, "title": "Leading AI adoption in your team", "summary": "Skills, habits, incentives and change management." },
+  { "id": "w12-next", "week": 12, "title": "What's next and your AI plan", "summary": "Where the field is heading and your 90-day plan." }
+]

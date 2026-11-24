@@ -1,0 +1,35 @@
+---
+interface Props {
+  slug: string;
+}
+const { slug } = Astro.props;
+---
+
+<button type="button" class="btn btn-primary" data-done-button data-slug={slug} aria-pressed="false">
+  Mark as done
+</button>
+
+<script>
+  import { ensureStarted, isDone, setDone } from '../lib/progress';
+  import { onChange } from '../lib/storage';
+
+  const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-done-button]'));
+
+  function render() {
+    for (const btn of buttons) {
+      const done = isDone(btn.dataset.slug ?? '');
+      btn.setAttribute('aria-pressed', String(done));
+      btn.textContent = done ? '✓ Done (tap to undo)' : 'Mark as done';
+    }
+  }
+
+  for (const btn of buttons) {
+    btn.addEventListener('click', () => {
+      const slug = btn.dataset.slug ?? '';
+      ensureStarted();
+      setDone(slug, !isDone(slug));
+    });
+  }
+
+  onChange(render);
+</script>

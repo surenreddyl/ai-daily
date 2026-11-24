@@ -1,0 +1,346 @@
+---
+import { getCollection, getEntry, render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../components/BaseLayout.astro';
+import DoneButton from '../../components/DoneButton.astro';
+import Quiz from '../../components/islands/Quiz.tsx';
+import Flashcards from '../../components/islands/Flashcards.tsx';
+import Checklist from '../../components/islands/Checklist.tsx';
+import VideoEmbed from '../../components/VideoEmbed.astro';
+import { withBase } from '../../lib/paths';
+
+export async function getStaticPaths() {
+  const lessons = (await getCollection('lessons')).sort((a, b) => a.data.day - b.data.day);
+  return lessons.map((lesson, i) => ({
+    params: { slug: lesson.data.slug },
+    props: { lesson, prev: lessons[i - 1], next: lessons[i + 1] },
+  }));
+}
+
+interface Props {
+  lesson: CollectionEntry<'lessons'>;
+  prev?: CollectionEntry<'lessons'>;
+  next?: CollectionEntry<'lessons'>;
+}
+
+const { lesson, prev, next } = Astro.props;
+const data = lesson.data;
+const lessonModule = await getEntry(data.module);
+const { Content } = await render(lesson);
+
+const roleLabels = {
+  sales: 'Sales',
+  marketing: 'Marketing',
+  gm: 'General management & ops',
+  general: 'Everyone',
+} as const;
+
+const typeLabels = {
+  doc: 'Read',
+  course: 'Course',
+  video: 'Video',
+  tool: 'Tool',
+  case: 'Case study',
+} as const;
+
+const level = data.level[0].toUpperCase() + data.level.slice(1);
+---
+
+<BaseLayout title={data.title} description={data.summary} current="lesson">
+  <article class="lesson">
+    <header class="lesson__header">
+      <p class="eyebrow">
+        Day {data.day} · Week {data.week}{lessonModule && <> · {lessonModule.data.title}</>}
+      </p>
+      <h1>{data.title}</h1>
+      <p class="lesson__meta">
+        <span class="tag">{data.minutes} min read</span>
+        <span class="tag">{data.practice.minutes} min practice</span>
+        <span class="tag tag-accent">{level}</span>
+      </p>
+      <div class="lesson__why">
+        <p class="eyebrow">Why it matters</p>
+        <p>{data.whyItMatters}</p>
+      </div>
+    </header>
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    {
+      data.video && (
+        <section class="lesson__section" aria-labelledby="video-heading">
+          <p class="eyebrow">Watch{data.video.minutes && <> · {data.video.minutes} min</>} · optional</p>
+          <h2 id="video-heading">See it explained</h2>
+          <VideoEmbed {...data.video} />
+        </section>
+      )
+    }
+
+    <section class="lesson__section" aria-labelledby="roles-heading" data-roles>
+      <h2 id="roles-heading">What it looks like in your role</h2>
+      <div class="roles__featured" data-roles-featured hidden>
+        <p class="eyebrow" data-roles-featured-label>For you</p>
+        <dl class="roles" data-roles-featured-list></dl>
+      </div>
+      <details class="roles__more" data-roles-more open>
+        <summary data-roles-summary>Examples for every role</summary>
+        <dl class="roles">
+          {
+            (Object.keys(roleLabels) as (keyof typeof roleLabels)[]).map((key) => (
+              <div class="roles__item" data-role={key}>
+                <dt>{roleLabels[key]}</dt>
+                <dd>{data.roleExamples[key]}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </details>
+    </section>
+
+    <section class="lesson__section" aria-labelledby="quiz-heading">
+      <p class="eyebrow">Check your understanding · 2 min</p>
+      <h2 id="quiz-heading">Quick quiz</h2>
+      <Quiz client:visible slug={data.slug} questions={data.quiz} />
+    </section>
+
+    <section class="lesson__section" aria-labelledby="cards-heading">
+      <p class="eyebrow">Quick review · 1 min</p>
+      <h2 id="cards-heading">Flashcards</h2>
+      <Flashcards client:visible cards={data.flashcards} />
+    </section>
+
+    <section class="lesson__section card practice" aria-labelledby="practice-heading">
+      <p class="eyebrow">Try it today · {data.practice.minutes} min</p>
+      <h2 id="practice-heading">Your practice task</h2>
+      <p>{data.practice.task}</p>
+      <p class="practice__output"><strong>What you'll have at the end:</strong> {data.practice.output}</p>
+    </section>
+
+    <section class="lesson__section" aria-labelledby="apply-heading">
+      <p class="eyebrow">Make it stick</p>
+      <h2 id="apply-heading">Apply it this week</h2>
+      <Checklist client:visible slug={data.slug} items={data.checklist} />
+    </section>
+
+    <section class="lesson__section" aria-labelledby="links-heading">
+      <h2 id="links-heading">Go deeper</h2>
+      <ul class="links">
+        {
+          data.links.map((link) => (
+            <li class="links__item">
+              <a href={link.url} target="_blank" rel="noopener noreferrer">
+                {link.title}
+                <span class="visually-hidden"> (opens in a new tab)</span>
+              </a>
+              <span class="links__meta">
+                <span class="tag">{typeLabels[link.type]}</span>
+                {link.free && <span class="tag tag-accent">Free</span>}
+                <span>{link.source}</span>
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <div class="lesson__done">
+      <DoneButton slug={data.slug} />
+    </div>
+
+    <nav class="lesson__pager" aria-label="More lessons">
+      {
+        prev ? (
+          <a href={withBase(`lesson/${prev.data.slug}/`)}>
+            ← Day {prev.data.day}: {prev.data.title}
+          </a>
+        ) : (
+          <span />
+        )
+      }
+      {
+        next && (
+          <a href={withBase(`lesson/${next.data.slug}/`)}>
+            Day {next.data.day}: {next.data.title} →
+          </a>
+        )
+      }
+    </nav>
+  </article>
+</BaseLayout>
+
+<script>
+  import { load, onChange } from '../../lib/storage';
+  import { roleExampleKey, roleLabel } from '../../lib/personalize';
+
+  // Move the learner's own role example to the top; fold the others away.
+  const section = document.querySelector<HTMLElement>('[data-roles]');
+  const featured = section?.querySelector<HTMLElement>('[data-roles-featured]');
+  const featuredLabel = section?.querySelector<HTMLElement>('[data-roles-featured-label]');
+  const featuredList = section?.querySelector<HTMLElement>('[data-roles-featured-list]');
+  const more = section?.querySelector<HTMLDetailsElement>('[data-roles-more]');
+  const summary = section?.querySelector<HTMLElement>('[data-roles-summary]');
+  const list = more?.querySelector<HTMLElement>('dl');
+
+  function render() {
+    if (!section || !featured || !featuredLabel || !featuredList || !more || !summary || !list) return;
+    const { role } = load().profile;
+
+    // Put any previously featured item back in the list (keeps the original order).
+    const moved = featured.querySelector<HTMLElement>('[data-role]');
+    if (moved) {
+      const order = ['sales', 'marketing', 'gm', 'general'];
+      const after = Array.from(list.children).find(
+        (el) => order.indexOf((el as HTMLElement).dataset.role ?? '') > order.indexOf(moved.dataset.role ?? ''),
+      );
+      list.insertBefore(moved, after ?? null);
+    }
+
+    if (!role) {
+      featured.hidden = true;
+      more.open = true;
+      summary.textContent = 'Examples for every role';
+      return;
+    }
+
+    const key = roleExampleKey(role);
+    const item = list.querySelector<HTMLElement>(`[data-role="${key}"]`);
+    if (!item) return;
+    featuredList.appendChild(item);
+    featuredLabel.textContent = role === 'other' ? 'For you' : `For you in ${roleLabel(role)}`;
+    featured.hidden = false;
+    more.open = false;
+    summary.textContent = 'See other roles';
+  }
+
+  onChange(render);
+</script>
+
+<style>
+  .lesson__header {
+    margin-bottom: var(--space-6);
+  }
+  .lesson__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .lesson__why {
+    max-width: var(--measure);
+    margin-top: var(--space-5);
+    padding: var(--space-4) var(--space-5);
+    border-left: 4px solid var(--color-accent);
+    background: var(--color-accent-soft);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  }
+  .lesson__why p:last-child {
+    margin: 0;
+    font-size: var(--text-lg);
+    line-height: 1.5;
+  }
+  .lesson__section {
+    margin-top: var(--space-7);
+    max-width: var(--measure);
+  }
+  .roles {
+    margin: 0;
+    display: grid;
+    gap: var(--space-3);
+  }
+  .roles__featured {
+    margin-bottom: var(--space-4);
+  }
+  .roles__featured[hidden] {
+    display: none;
+  }
+  .roles__featured :global(.roles__item) {
+    border: 2px solid var(--color-accent);
+    background: var(--color-accent-soft);
+    font-size: var(--text-lg);
+    line-height: 1.5;
+  }
+  .roles__more summary {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    min-height: var(--tap-min);
+    color: var(--color-accent);
+    font-weight: 600;
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-2);
+    list-style: none;
+    gap: var(--space-2);
+  }
+  .roles__more summary::-webkit-details-marker {
+    display: none;
+  }
+  .roles__more summary::before {
+    content: '▸';
+    display: inline-block;
+  }
+  .roles__more[open] summary::before {
+    transform: rotate(90deg);
+  }
+  .roles__item {
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+  }
+  .roles dt {
+    font-weight: 650;
+    font-size: var(--text-sm);
+    color: var(--color-accent);
+  }
+  .roles dd {
+    margin: var(--space-1) 0 0;
+  }
+  .practice h2 {
+    margin-top: 0;
+  }
+  .practice__output {
+    margin-bottom: 0;
+  }
+  .links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .links__item {
+    padding-block: var(--space-3);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .links__item a {
+    font-weight: 600;
+    display: inline-block;
+    min-height: var(--tap-min);
+    padding-block: var(--space-2);
+  }
+  .links__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-xs);
+    color: var(--color-ink-muted);
+  }
+  .lesson__done {
+    margin-top: var(--space-7);
+  }
+  .lesson__pager {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-4);
+    margin-top: var(--space-7);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--color-border);
+    font-size: var(--text-sm);
+  }
+  .lesson__pager a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-min);
+    max-width: 22rem;
+  }
+</style>

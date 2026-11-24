@@ -1,0 +1,43 @@
+---
+// Click-to-load YouTube video. Nothing is requested from YouTube or Google
+// until the learner taps play; then it loads in privacy-enhanced mode.
+interface Props {
+  youtubeId: string;
+  title: string;
+  source: string;
+  minutes?: number;
+}
+const { youtubeId, title, source, minutes } = Astro.props;
+---
+
+<div class="video" data-video data-id={youtubeId} data-title={title}>
+  <button type="button" class="video__facade" data-video-play aria-label={`Play video: ${title}. Loads the YouTube player.`}>
+    <span class="video__play" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="28" height="28"><path fill="currentColor" d="M8 5.5v13l11-6.5z"></path></svg>
+    </span>
+    <span class="video__meta">
+      <span class="video__title">{title}</span>
+      <span class="video__source">{source}{minutes && ` · ${minutes} min`}</span>
+    </span>
+  </button>
+  <p class="video__note">Plays from YouTube in privacy-enhanced mode. Nothing loads until you tap play.</p>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-video]').forEach((box) => {
+    const button = box.querySelector<HTMLButtonElement>('[data-video-play]');
+    button?.addEventListener('click', () => {
+      const id = box.dataset.id ?? '';
+      if (!/^[A-Za-z0-9_-]{11}$/.test(id)) return;
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+      iframe.title = box.dataset.title ?? 'Video';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      iframe.className = 'video__frame';
+      button.replaceWith(iframe);
+      iframe.focus();
+    });
+  });
+</script>

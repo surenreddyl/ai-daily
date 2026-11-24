@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+import Profile from '../components/islands/Profile.tsx';
+import { withBase } from '../lib/paths';
+---
+
+<BaseLayout title="Profile" description="Your AI Daily progress and settings." current="profile">
+  <h1>Your profile</h1>
+  <p class="lede">Your progress and settings. Everything here stays on this device.</p>
+  <Profile client:only="preact" todayUrl={withBase()} />
+  <noscript><p>Turn on JavaScript to see your progress and settings.</p></noscript>
+</BaseLayout>

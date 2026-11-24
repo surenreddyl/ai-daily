@@ -1,0 +1,65 @@
+/* Design tokens: change the look of the whole site from here. */
+:root {
+  /* Colour: warm neutrals + one accent. All text pairs meet WCAG AA (>= 4.5:1). */
+  --color-bg: #faf9f6;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f2f0eb;
+  --color-ink: #1c1b19;
+  --color-ink-muted: #57544e;
+  --color-border: #e2ded6;
+  --color-accent: #1f5e57;
+  --color-accent-strong: #154540;
+  --color-accent-soft: #e4efed;
+  --color-on-accent: #ffffff;
+  --color-focus: #b4480f;
+
+  /* Type */
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, 'Times New Roman', serif;
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-base: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.625rem;
+  --text-2xl: clamp(1.75rem, 1.4rem + 1.6vw, 2.5rem);
+  --leading-tight: 1.2;
+  --leading-body: 1.65;
+
+  /* Space */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+
+  /* Shape */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --shadow-card: 0 1px 2px rgb(28 27 25 / 0.04), 0 4px 16px rgb(28 27 25 / 0.06);
+
+  /* Layout */
+  --measure: 68ch;
+  --page-max: 46rem;
+  --tap-min: 44px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #151716;
+    --color-surface: #1d201f;
+    --color-surface-muted: #252928;
+    --color-ink: #ecebe7;
+    --color-ink-muted: #b3b0a9;
+    --color-border: #343937;
+    --color-accent: #7cc4b8;
+    --color-accent-strong: #a3d8cf;
+    --color-accent-soft: #23332f;
+    --color-on-accent: #0f1f1c;
+    --color-focus: #f0a46e;
+    --shadow-card: none;
+  }
+}
