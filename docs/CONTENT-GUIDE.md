@@ -8,9 +8,13 @@
 | 2 | Prompting for business results | 6–10 | ✅ Live |
 | 3 | AI for sales | 11–15 | ✅ Live (Phase 6) |
 | 4 | AI for marketing | 16–20 | ✅ Live (Phase 6) |
-| 5 | AI for analysis and decisions | 21–25 | ✅ Written (Phase 7) |
-| 6 | Everyday productivity with AI assistants | 26–30 | ✅ Written (Phase 7) |
-| 7–12 | Agents, risk, tools, use cases, adoption, what's next | 31–60 | Planned |
+| 5 | AI for analysis and decisions | 21–25 | ✅ Live (Phase 7) |
+| 6 | Everyday productivity with AI assistants | 26–30 | ✅ Live (Phase 7) |
+| 7 | Agents and automation | 31–35 | ✅ Written (Phase 8) |
+| 8 | Risk, ethics and governance | 36–40 | ✅ Written (Phase 8) |
+| 9–12 | Tools and vendors, use cases, adoption, what's next | 41–60 | Planned |
+
+Regulation and legal topics lead with India, then give a global overview (EU AI Act, GDPR, US guidance), and always say "general information, not legal advice; check with legal or compliance" (owner's choice, Phase 8).
 
 Productivity lessons cover Microsoft 365 and Google Workspace equally, with ChatGPT and Claude as the fallback (Phase 7 default).
 

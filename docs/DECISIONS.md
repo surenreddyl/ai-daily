@@ -44,4 +44,8 @@ One line per key decision. Newest at the bottom.
 - 2026-11-24 · Tool features in Week 6 (Copilot in Outlook, Teams and PowerPoint; Gemini in Gmail, Meet, Sheets and Slides; deep research) were each checked on the vendor's help page.
 - 2026-11-24 · Today page shows "Week N complete" when a week's last lesson is done, "Halfway there" at Day 30, and a finish note at Day 60. No badges or nagging.
 - 2026-11-24 · Where evidence is mainly anecdotal (e.g. Shell's scenario planning), the lesson says so.
+- 2026-11-24 · Phase 8: Days 31–40 (agents and automation; risk, ethics and governance). Regulation leads with India, then global (owner's choice).
+- 2026-11-24 · Regulatory dates used only where confirmed on primary or law-firm sources: DPDP Rules notified Nov 2025, with phases on 13 Nov 2026 and 13 May 2027; EU AI Act transparency from Aug 2026 and high-risk rules from 2 Dec 2027 (per the Commission page after the 2026 amendments). Re-check these dates at each content review.
+- 2026-11-24 · Legal-topic lessons carry a "general information, not legal advice" line.
+- 2026-11-24 · Corrections from source checks: Amazon's statement and Deloitte's "findings unchanged" were reworded to what the cited articles actually say; the Gender Shades figures were dropped because they're not on the cited page.
 - 2026-11-24 · About page states the privacy promise accurately: no cookies, analytics or ads; the host keeps standard server logs.

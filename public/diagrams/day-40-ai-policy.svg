@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 334" width="400" height="334">
+  <rect class="dg-box" x="16" y="8" width="368" height="60" rx="12"/>
+  <circle class="dg-dot" cx="44" cy="38" r="13" opacity="0.15"/>
+  <text class="dg-num" x="44" y="42.5" text-anchor="middle">1</text>
+  <text class="dg-text" x="70" y="34">Approved tools</text>
+  <text class="dg-sub" x="70" y="53">Which assistants, for which data</text>
+  <line class="dg-line" x1="200" y1="71" x2="200" y2="85"/>
+  <polygon class="dg-head" points="194,84 206,84 200,91"/>
+  <rect class="dg-box" x="16" y="94" width="368" height="60" rx="12"/>
+  <circle class="dg-dot" cx="44" cy="124" r="13" opacity="0.15"/>
+  <text class="dg-num" x="44" y="128.5" text-anchor="middle">2</text>
+  <text class="dg-text" x="70" y="120">Data rules</text>
+  <text class="dg-sub" x="70" y="139">Green, amber, red information</text>
+  <line class="dg-line" x1="200" y1="157" x2="200" y2="171"/>
+  <polygon class="dg-head" points="194,170 206,170 200,177"/>
+  <rect class="dg-box" x="16" y="180" width="368" height="60" rx="12"/>
+  <circle class="dg-dot" cx="44" cy="210" r="13" opacity="0.15"/>
+  <text class="dg-num" x="44" y="214.5" text-anchor="middle">3</text>
+  <text class="dg-text" x="70" y="206">Check and disclose</text>
+  <text class="dg-sub" x="70" y="225">Verify outputs; say when AI was used</text>
+  <line class="dg-line" x1="200" y1="243" x2="200" y2="257"/>
+  <polygon class="dg-head" points="194,256 206,256 200,263"/>
+  <rect class="dg-accent" x="16" y="266" width="368" height="60" rx="12"/>
+  <circle class="dg-dot" cx="44" cy="296" r="13" opacity="0.15"/>
+  <text class="dg-num" x="44" y="300.5" text-anchor="middle">4</text>
+  <text class="dg-text" x="70" y="292">Owner and review</text>
+  <text class="dg-sub" x="70" y="311">Who answers questions; review twice a year</text>
+</svg>
