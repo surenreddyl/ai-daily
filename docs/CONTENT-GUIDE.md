@@ -1,5 +1,17 @@
 # How to write an AI Daily lesson
 
+## Content status
+
+| Week | Module | Days | Status |
+|---|---|---|---|
+| 1 | Foundations of generative AI | 1–5 | ✅ Live |
+| 2 | Prompting for business results | 6–10 | ✅ Live |
+| 3 | AI for sales | 11–15 | ✅ Written (Phase 6) |
+| 4 | AI for marketing | 16–20 | ✅ Written (Phase 6) |
+| 5–12 | Analysis, productivity, agents, risk, tools, use cases, adoption, what's next | 21–60 | Planned |
+
+Examples should mix B2B and B2C (owner's choice, Phase 6).
+
 Each lesson is one file in `src/content/lessons/`, named `day-NN-short-name.md`
 (for example `day-04-ai-for-email.md`). Copy an existing lesson and change it. That's the easiest way.
 

@@ -36,4 +36,8 @@ One line per key decision. Newest at the bottom.
 - 2026-11-24 · Prompts contain only the lesson topic and the learner's role phrase, never their name. Links open with no referrer.
 - 2026-11-24 · `aiPrompts` (explain, applyToRole with `{role}`) is required on every lesson; "Quiz me" and "Challenge me" are generated from the title and summary.
 - 2026-11-24 · GitHub publish steps updated to checkout v7, setup-node v7 (Node 24), upload-pages-artifact v5, deploy-pages v5, clearing the Node 20 warning.
+- 2026-11-24 · Phase 6: Days 11–20 (AI for sales, AI for marketing). Examples mix B2B and B2C (owner's choice).
+- 2026-11-24 · Weekly link check runs on GitHub every Monday (free). A broken link fails the run and GitHub emails the owner; the live site is unaffected.
+- 2026-11-24 · Company-reported case figures (e.g. Lumen's "4 hours to 15 minutes") are labelled as company-reported, not independent.
+- 2026-11-24 · Facts we couldn't confirm on the source page were removed (e.g. the GEO paper's author institutions; McKinsey and Gartner pages block automated checks, so their figures aren't used).
 - 2026-11-24 · About page states the privacy promise accurately: no cookies, analytics or ads; the host keeps standard server logs.

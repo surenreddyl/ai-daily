@@ -1,0 +1,21 @@
+# Checks every lesson link every Monday. If a link is broken, this run fails and
+# GitHub emails the repository owner. The live site is never affected.
+name: Weekly link check
+
+on:
+  schedule:
+    - cron: '0 6 * * 1' # Mondays 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - run: npm run links
