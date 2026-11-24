@@ -84,7 +84,16 @@ const cards = await Promise.all(
     if (target > chosenDay) {
       message = "You're all caught up. New lessons are on the way, so revisit any lesson in the Library.";
     } else if (isDone(chosen.dataset.slug ?? '')) {
-      message = `Done for today. Come back tomorrow for Day ${chosenDay + 1}.`;
+      const week = Math.ceil(chosenDay / 5);
+      if (chosenDay === TOTAL_DAYS) {
+        message = `You've completed all ${TOTAL_DAYS} days. Remarkable. Keep your AI routine going.`;
+      } else if (chosenDay === TOTAL_DAYS / 2) {
+        message = `Halfway there: ${chosenDay} of ${TOTAL_DAYS} days done. Week ${week} complete. Come back tomorrow for Day ${chosenDay + 1}.`;
+      } else if (chosenDay % 5 === 0) {
+        message = `Week ${week} complete. Nice work. Come back tomorrow to start Week ${week + 1}.`;
+      } else {
+        message = `Done for today. Come back tomorrow for Day ${chosenDay + 1}.`;
+      }
     }
     if (status) {
       status.textContent = message;

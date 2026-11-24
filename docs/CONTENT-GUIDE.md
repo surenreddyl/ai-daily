@@ -6,9 +6,13 @@
 |---|---|---|---|
 | 1 | Foundations of generative AI | 1–5 | ✅ Live |
 | 2 | Prompting for business results | 6–10 | ✅ Live |
-| 3 | AI for sales | 11–15 | ✅ Written (Phase 6) |
-| 4 | AI for marketing | 16–20 | ✅ Written (Phase 6) |
-| 5–12 | Analysis, productivity, agents, risk, tools, use cases, adoption, what's next | 21–60 | Planned |
+| 3 | AI for sales | 11–15 | ✅ Live (Phase 6) |
+| 4 | AI for marketing | 16–20 | ✅ Live (Phase 6) |
+| 5 | AI for analysis and decisions | 21–25 | ✅ Written (Phase 7) |
+| 6 | Everyday productivity with AI assistants | 26–30 | ✅ Written (Phase 7) |
+| 7–12 | Agents, risk, tools, use cases, adoption, what's next | 31–60 | Planned |
+
+Productivity lessons cover Microsoft 365 and Google Workspace equally, with ChatGPT and Claude as the fallback (Phase 7 default).
 
 Examples should mix B2B and B2C (owner's choice, Phase 6).
 

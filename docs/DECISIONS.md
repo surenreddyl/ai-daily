@@ -40,4 +40,8 @@ One line per key decision. Newest at the bottom.
 - 2026-11-24 · Weekly link check runs on GitHub every Monday (free). A broken link fails the run and GitHub emails the owner; the live site is unaffected.
 - 2026-11-24 · Company-reported case figures (e.g. Lumen's "4 hours to 15 minutes") are labelled as company-reported, not independent.
 - 2026-11-24 · Facts we couldn't confirm on the source page were removed (e.g. the GEO paper's author institutions; McKinsey and Gartner pages block automated checks, so their figures aren't used).
+- 2026-11-24 · Phase 7: Days 21–30 (analysis and decisions; everyday productivity). Microsoft 365 and Google Workspace covered equally (default; owner didn't specify).
+- 2026-11-24 · Tool features in Week 6 (Copilot in Outlook, Teams and PowerPoint; Gemini in Gmail, Meet, Sheets and Slides; deep research) were each checked on the vendor's help page.
+- 2026-11-24 · Today page shows "Week N complete" when a week's last lesson is done, "Halfway there" at Day 30, and a finish note at Day 60. No badges or nagging.
+- 2026-11-24 · Where evidence is mainly anecdotal (e.g. Shell's scenario planning), the lesson says so.
 - 2026-11-24 · About page states the privacy promise accurately: no cookies, analytics or ads; the host keeps standard server logs.
